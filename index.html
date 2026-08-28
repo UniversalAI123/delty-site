@@ -106,7 +106,10 @@
     Baseline scan on Day&nbsp;1. Proof by Day&nbsp;30. One private timeline instead of
     Notes&nbsp;+ spreadsheets&nbsp;+ camera roll.</p>
 
-    <!-- FOUNDER: replace FORM_ENDPOINT with your Formspree/Tally URL before publish -->
+    <!-- FOUNDER: BOTH forms still post to the literal string FORM_ENDPOINT, which 404s.
+         Replace it in BOTH places with your Formspree/Tally URL. Until you do, the
+         script at the bottom of this file catches the submit and falls back to a
+         mailto draft so no signup is lost. -->
     <form class="cta-form" action="FORM_ENDPOINT" method="POST">
       <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
       <input type="hidden" name="ref" id="refField" value="direct">
@@ -176,6 +179,34 @@
     var f2 = document.querySelector('.refField2');
     if (f2) f2.value = ref;
   }
+
+  // Safety net: this page went live with action="FORM_ENDPOINT" still unreplaced,
+  // which posts to /FORM_ENDPOINT (404) and silently loses the address. Until a
+  // real endpoint is wired, intercept the submit and hand the person a mail draft
+  // so the signup actually reaches us. Delete this block once FORM_ENDPOINT is
+  // replaced -- the guard disables itself automatically, but dead code is dead code.
+  Array.prototype.forEach.call(document.querySelectorAll('.cta-form'), function (form) {
+    form.addEventListener('submit', function (e) {
+      var action = form.getAttribute('action') || '';
+      if (action !== 'FORM_ENDPOINT') return; // real endpoint configured: leave it alone
+      e.preventDefault();
+
+      var email = (form.querySelector('input[name="email"]') || {}).value || '';
+      var source = (form.querySelector('input[name="ref"]') || {}).value || 'direct';
+      var note = form.parentNode.querySelector('.cta-note') || form.nextElementSibling;
+
+      window.location.href =
+        'mailto:contact@universalaillc.com' +
+        '?subject=' + encodeURIComponent('Delty early access') +
+        '&body=' + encodeURIComponent(
+          'Please add me to the Delty early-access list.\n\nEmail: ' + email + '\nSource: ' + source
+        );
+
+      if (note) {
+        note.textContent = 'Opening your mail app to finish — send the message and you are on the list.';
+      }
+    });
+  });
 </script>
 </body>
 </html>
