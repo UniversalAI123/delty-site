@@ -249,7 +249,7 @@
       <p class="sub">A daily record for people on a GLP-1 or peptide routine. Doses, check-ins and
       measurements in seconds. One page for your next appointment. Photos only when you want them.
       Nothing leaves your iPhone unless you share it.</p>
-      <form class="cta" id="join" action="FORM_ENDPOINT" method="POST">
+      <form class="cta" id="join" action="#" method="POST" novalidate="false">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <input type="hidden" name="ref" id="refField" value="direct">
         <button class="btn" type="submit">Tell me when it's live</button>
@@ -463,7 +463,7 @@
       <div class="kicker">Start today</div>
       <h2>Start on the day you would rather forget.</h2>
       <p class="lead">The first entry is the one future-you will thank you for.</p>
-      <form class="cta" action="FORM_ENDPOINT" method="POST" style="margin-top:24px">
+      <form class="cta" action="#" method="POST" novalidate="false" style="margin-top:24px">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <input type="hidden" name="ref" class="refField2" value="direct">
         <button class="btn" type="submit">Tell me when it's live</button>
@@ -491,17 +491,39 @@
     var f2 = document.querySelector('.refField2');
     if (f2) f2.value = ref;
   }
-  // Until a real form endpoint is wired, hand the person a mail draft so no signup is lost.
+  // Launch list: one RPC on the studio's Supabase project (insert-only for the public key; nothing is readable
+  // from the browser). If the network call fails for any reason, fall back to a mail draft so no signup is lost.
+  var WAITLIST_URL = 'https://eelywdeipkraxgxtpfry.supabase.co/rest/v1/rpc/delty_waitlist_join';
+  var WAITLIST_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlbHl3ZGVpcGtyYXhneHRwZnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NzI5ODQsImV4cCI6MjA5MjM0ODk4NH0.M-fYgwiViFBHSq34T2TvaLcgw5NduSNaMi9Eh1Sa-RI';
   Array.prototype.forEach.call(document.querySelectorAll('form.cta'), function (form) {
     form.addEventListener('submit', function (e) {
-      if ((form.getAttribute('action') || '') !== 'FORM_ENDPOINT') return;
       e.preventDefault();
-      var email = (form.querySelector('input[name="email"]') || {}).value || '';
+      var input = form.querySelector('input[name="email"]');
+      var email = (input && input.value || '').trim();
       var source = (form.querySelector('input[name="ref"]') || {}).value || 'direct';
-      window.location.href = 'mailto:contact@universalaillc.com?subject=' + encodeURIComponent('Delty launch list') +
-        '&body=' + encodeURIComponent('Please tell me when Delty is on the App Store.\n\nEmail: ' + email + '\nSource: ' + source);
+      var btn = form.querySelector('button');
       var note = form.parentNode.querySelector('.cta-note');
-      if (note) note.textContent = 'Opening your mail app to finish — send the message and you are on the list.';
+      if (!email) { if (input) input.focus(); return; }
+      if (btn) { btn.disabled = true; btn.textContent = 'One moment…'; }
+      var done = function (ok) {
+        if (ok) {
+          if (btn) { btn.textContent = "You're on the list ✓"; }
+          if (input) { input.value = ''; }
+          if (note) note.textContent = 'Done. One email when Delty is on the App Store — nothing else, ever.';
+        } else {
+          if (btn) { btn.disabled = false; btn.textContent = "Tell me when it's live"; }
+          window.location.href = 'mailto:contact@universalaillc.com?subject=' + encodeURIComponent('Delty launch list') +
+            '&body=' + encodeURIComponent('Please tell me when Delty is on the App Store.\n\nEmail: ' + email + '\nSource: ' + source);
+          if (note) note.textContent = 'Opening your mail app to finish — send the message and you are on the list.';
+        }
+      };
+      try {
+        fetch(WAITLIST_URL, {
+          method: 'POST',
+          headers: { 'apikey': WAITLIST_KEY, 'Authorization': 'Bearer ' + WAITLIST_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ p_email: email, p_source: source })
+        }).then(function (r) { done(r.ok); }).catch(function () { done(false); });
+      } catch (err) { done(false); }
     });
   });
   // Quiet rise-in on scroll; disabled under Reduce Motion by the stylesheet.
