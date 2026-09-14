@@ -6,16 +6,16 @@ p,li{font-size:15px;color:#3d4356}
 .meta{color:#5B6478;font-size:13px;margin-bottom:28px}
 a{color:#3D7BFF}
 .sitehdr{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;color:inherit;margin:4px 0 26px}.sitehdr img{width:30px;height:30px;border-radius:9px}</style><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" href="assets/icon-180.png"></head><body><div class="wrap"><a class="sitehdr" href="/"><img src="assets/icon-180.png" alt="">Delty</a>
-<h1>Privacy Policy</h1><div class="meta">Delty · Universal AI LLC · Effective September 7, 2026</div>
+<h1>Privacy Policy</h1><div class="meta">Delty · Universal AI LLC · Effective September 13, 2026</div>
 <h2>The short version</h2>
-<p>Your data lives on your device. Delty has no accounts, no server-side database of your logs, and no advertising SDKs. We cannot see your weight, your photos, your routine, or your notes — by design.</p>
+<p>Your health record and progress photos are stored on your device. Core tracking does not require an account. Purchases, optional analytics, and the optional research pilot use the services described below. Delty does not operate a server-side database of your health record or use advertising SDKs. We do not sell your data or share it with advertising networks.</p>
 <h2>What the app stores</h2>
-<p>Everything you enter — routine items, weights, measurements, check-ins, notes, and progress photos — is stored locally on your device. It is included in your own device backups (e.g., iCloud device backup) under Apple's protections, and never transmitted to us.</p>
+<p>Routine items, weights, measurements, check-ins, notes, and progress photos are stored locally on your device. Your device backups may include app data depending on your Apple settings. Delty does not upload your health record to its servers. Sharing or exporting creates a copy at the destination you choose.</p>
 <h2>What leaves your device</h2>
 <ul>
-<li><b>Nothing automatically.</b> Sharing a card, exporting a CSV, or exporting a doctor report happens only when you explicitly trigger it, through Apple's share sheet, to a destination you pick.</li>
-<li><b>Purchases</b> are processed by Apple. We receive anonymous transaction status (e.g., "subscription active") from Apple/our billing processor — never payment details.</li>
-<li><b>Usage analytics</b>, if enabled in a future version, are limited to anonymous app events (e.g., "onboarding completed"). Health information — weights, compound names, side effects, photos, notes — is never included in analytics. We do not sell data and do not share data with advertising networks.</li>
+<li><b>Sharing and exports.</b> Sharing a card, exporting a CSV, or exporting a doctor report happens only when you explicitly trigger it, through Apple's share sheet, to a destination you pick.</li>
+<li><b>Purchases</b> are processed by Apple. Apple and our billing processor, RevenueCat, process subscription status, purchase information, and an app user identifier so Delty can verify access and restore purchases. Delty does not receive your payment-card details.</li>
+
 </ul>
 <h2>Camera and photos</h2>
 <p>Camera and photo-library access are used solely to capture and select your progress photos. Photos stay on your device. Alongside each scan, Delty stores a small analysis image and the capture measurements it uses to check that later scans can be compared (phone angle, the body landmarks you place, and lighting statistics). These stay on your device with the photo.</p>
@@ -28,12 +28,18 @@ a{color:#3D7BFF}
 <h2>Apple Health</h2>
 <p>If you choose to import from Apple Health, Delty reads weight and waist measurements you already recorded there and adds them to your local record. Delty never writes to Apple Health and never transmits Health data.</p>
 <h2>Usage analytics (optional, off by default)</h2>
-<p>Delty can send anonymous usage events to PostHog (a third-party analytics provider) only if you turn this on in Settings. Events describe which features were used (for example, that a check-in was saved) with numeric or true/false properties only; they never include weights, measurements, routine names, notes, photos, or anything you typed. A random per-install identifier is used, never your name, email, or device identifier. Turning analytics off stops uploads and clears the local queue and identifier; it cannot recall events already sent. To have previously sent events deleted, contact contact@universalaillc.com.</p>
+<p>Delty can send usage events to PostHog (a third-party analytics provider) only if you turn this on in Settings. Events describe which features were used (for example, that a check-in was saved) with numeric or true/false properties only; they never include weights, measurements, routine names, notes, photos, or anything you typed. A random per-install identifier is used, never your name, email, or device identifier. Turning analytics off stops uploads and clears the local queue and identifier; it cannot recall events already sent. To have previously sent events deleted, contact contact@universalaillc.com.</p>
 
+<h2>Optional AI research pilot</h2>
+<p>The research pilot is restricted to approved accounts and may be unavailable. Before you enter credentials, the app asks you to agree to its data-sharing disclosure. Signing in sends your email and password to Supabase authentication for the dedicated Delty project in the United States. Your access session stays in app memory; the app discards refresh tokens and asks you to sign in again after expiry.</p>
+<p>When you request an explanation, Delty sends the selected ingredient, one of the fixed research questions, and a reviewed study summary through its Supabase backend to OpenAI. Your photos, health logs, routines, measurements, and notes are not included. The pilot does not accept a free-form health history or send label images to OpenAI. AI explanations may be incorrect and do not verify purity, personal suitability, or safe doses.</p>
+<p>Delty does not save explanation text in its application database. OpenAI requests use response storage disabled; this does not mean zero provider retention. Providers may retain security and operational logs and process connection metadata such as IP addresses. See <a href="https://developers.openai.com/api/docs/guides/your-data">OpenAI's API data controls</a> and <a href="https://supabase.com/privacy">Supabase's privacy policy</a> for their practices.</p>
+<p>Delty stores daily request counters keyed to your pilot account and aggregate daily counters to enforce usage limits. A daily cleanup is scheduled to delete counters whose UTC usage date is more than seven days old. Your authentication account remains until it is deleted. Provider logs and backups may have separate retention schedules.</p>
+<p>In the research panel, you can sign out and clear the displayed explanation, or choose <b>Delete pilot account</b> and confirm. Account deletion removes the Supabase authentication account and its individual request counters; aggregate counts remain until scheduled cleanup. It does not delete your on-device health record, copies you exported, or cancel an Apple subscription. You can withdraw consent before signing in; after signing in, signing out clears the active app session.</p>
 <h2>Notifications</h2>
 <p>Reminders are scheduled locally on your device. We run no push-notification server.</p>
 <h2>Deleting your data</h2>
-<p>Settings → "Delete all my data" permanently removes everything Delty stores on the device. Deleting the app does the same.</p>
+<p>Use Settings → "Delete all my data" to remove Delty’s local record. Copies you exported, device backups, and information already sent to optional providers are separate. To delete a research pilot account, use the account deletion control in the research panel. To request help with provider-held data, contact us below. Deleting local data or a pilot account does not cancel your Apple subscription; manage subscriptions in your Apple settings.</p>
 <h2>Age</h2><p>Delty is intended for users 18 and older.</p>
 <h2>Health disclaimer</h2><p>Delty is a tracking tool. It is not a medical device and provides no medical or dosing advice. Consult your healthcare provider for medical decisions.</p>
 <h2>Contact</h2><p>Universal AI LLC · <a href="mailto:contact@universalaillc.com">contact@universalaillc.com</a></p>
