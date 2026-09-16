@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delty — Your routine, on the record</title>
-<meta name="description" content="Delty is a private daily record for people on a GLP-1 or peptide routine: doses, check-ins and measurements, a one-page visit summary for your clinician, and optional comparable photos. On your iPhone, never on a server.">
+<meta name="description" content="Delty is a private daily record for people on a GLP-1 or peptide routine: doses, check-ins and measurements, a one-page visit summary for your clinician, and optional comparable photos. Your health record stays on your iPhone; optional services are explained in our privacy policy.">
 <meta property="og:title" content="Delty — Your routine, on the record">
 <meta property="og:description" content="Doses, check-ins and measurements in one private record. A one-page visit summary. Photos when you want them.">
 <meta name="theme-color" content="#F4F5FA">
@@ -246,21 +246,21 @@
     <div>
       <span class="eyebrow"><i></i>iOS · Private by design</span>
       <h1>Your routine,<br><span class="grad">on the record.</span></h1>
-      <p class="sub">A daily record for people on a GLP-1 or peptide routine. Doses, check-ins and
+      <p class="sub">A daily record for men and women on a GLP-1 or peptide routine. Doses, check-ins and
       measurements in seconds. One page for your next appointment. Photos only when you want them.
-      Nothing leaves your iPhone unless you share it.</p>
-      <form class="cta" id="join" action="#" method="POST" novalidate="false">
+      Your health record stays on your iPhone. Purchases and optional services are explained in our privacy policy.</p>
+      <form class="cta" id="join" action="#" method="POST">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <input type="hidden" name="ref" id="refField" value="direct">
         <button class="btn" type="submit">Tell me when it's live</button>
       </form>
-      <p class="cta-note">One email when Delty is on the App Store. No newsletters, ever.</p>
+      <p class="cta-note" role="status" aria-live="polite">One launch email. Your address and optional referral code are stored by Supabase; <a href="/privacy.html#launch-list">see privacy details</a>.</p>
       <div class="badge" aria-label="Coming soon to the App Store">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.2-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.3zM13.9 5.2c.7-.8 1.1-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.3z"/></svg>
         <span><small>Coming soon on the</small>App Store</span>
       </div>
       <div class="facts">
-        <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#199E8A" stroke-width="2.2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>No account</span>
+        <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#199E8A" stroke-width="2.2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>No account for tracking</span>
         <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#199E8A" stroke-width="2.2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18h2"/></svg>On your phone</span>
         <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="#199E8A" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>Never advises</span>
       </div>
@@ -286,7 +286,7 @@
               <div class="s-row"><div>Weigh-in<small>Optional</small></div><b>Add</b></div>
             </div>
             <div class="s-card" style="padding:4px 14px;margin-top:10px">
-              <div class="s-row"><div>Photos<small>Optional · guided so later photos match</small></div><b>Open Scan</b></div>
+              <div class="s-row"><div>Photos<small>Optional · guided photo setup</small></div><b>Open Scan</b></div>
             </div>
           </div>
           <div class="s-tabs">
@@ -374,8 +374,8 @@
     <div class="row">
       <div class="copy">
         <div class="kicker">Photos · optional</div>
-        <h3>Same framing. Same light. So the change is real.</h3>
-        <p>Guided capture checks distance, tilt and lighting before the photo is taken, so a later photo is comparable to the first. Photos stay on the phone. Comparison at Day 30, 60 and 90 and DELTY Replay are part of Pro; the record never depends on them.</p>
+        <h3>Repeat the setup. Compare your own photos.</h3>
+        <p>Guided capture helps you repeat your framing, phone angle and lighting. These checks cannot guarantee comparable photos. Photos stay on the phone unless you choose to share or export them. Your first photo comparison is free; further comparisons and DELTY Replay are part of Pro.</p>
       </div>
       <div class="mock">
         <div class="k">COMPARISON · ILLUSTRATION</div>
@@ -411,7 +411,7 @@
 
   <section class="rise">
     <div class="band">
-      <div class="t"><h4>Nothing leaves your phone unless you share it.</h4><p>No accounts, no cloud copy of your record, no ad SDKs. Backups are files you control, and moving to a new phone is three steps.</p></div>
+      <div class="t"><h4>Your health record stays on your phone.</h4><p>Core tracking needs no account. Your health record stays local; purchases and optional services have separate data flows explained in our privacy policy. Archives are files you control.</p></div>
       <div class="t"><h4>We document. We never advise.</h4><p>Delty does not suggest a substance, an amount or a schedule. Dose Check verifies the arithmetic on numbers your clinician gave you and shows every step.</p></div>
       <div class="t"><h4>No tricks.</h4><p>The daily record is free. One annual plan for Pro, the price shown before anything is charged, cancel anytime in your Apple settings.</p></div>
     </div>
@@ -435,10 +435,10 @@
       </div>
       <div class="plan pro">
         <div class="name">Pro</div>
-        <div class="price">$69.99 <small>per year · one plan, billed by Apple</small></div>
+        <div class="price">$69.99 <small>per year · US price, billed by Apple</small></div>
         <div class="for">Everything in Free, plus what the record becomes over time.</div>
         <ul>
-          <li><i></i>Photo comparison at Day 30, 60 and 90</li>
+          <li><i></i>Further photo comparisons after your free first comparison</li>
           <li><i></i>DELTY Replay — every scan as one sequence</li>
           <li><i></i>Unlimited visit summaries</li>
           <li><i></i>Photo shares</li>
@@ -450,9 +450,9 @@
   <section class="rise">
     <div class="kicker">Questions</div>
     <h2>Straight answers.</h2>
-    <details><summary>Where is my data?</summary><p>On your iPhone. Delty has no accounts and no server that holds your record. Nothing is uploaded unless you share it yourself.</p></details>
+    <details><summary>Where is my data?</summary><p>Your health record is stored on your iPhone. Core tracking needs no account. Purchases, opt-in analytics and the restricted research pilot use the services described in our <a href="/privacy.html">privacy policy</a>.</p></details>
     <details><summary>Does Delty tell me what to take?</summary><p>No, and it never will. It records what you already do. Dose Check verifies arithmetic on numbers your clinician gave you and shows every step; it does not suggest a number.</p></details>
-    <details><summary>Why no iCloud sync?</summary><p>Apple's App Review rules for health apps do not allow personal health information to be stored in iCloud. Archives are the compliant path and keep you in control of every copy.</p></details>
+    <details><summary>Why no iCloud sync?</summary><p>Delty does not offer automatic cloud sync for your health record. You can export an archive and choose where to keep it; each exported copy needs its own protection.</p></details>
     <details><summary>I got a new phone.</summary><p>Create an archive with photos in Settings, send the file to the new phone with AirDrop or Files, then choose Restore from an archive on the Welcome screen.</p></details>
     <details><summary>Is this a medical device?</summary><p>No. Delty is for personal record-keeping. It does not diagnose, treat, cure or prevent any condition. Talk to your healthcare provider before making medical decisions.</p></details>
     <p style="margin-top:14px;font-size:.92rem;color:var(--dim)">More on the <a href="/support.html">support page</a>.</p>
@@ -463,11 +463,12 @@
       <div class="kicker">Start today</div>
       <h2>Start on the day you would rather forget.</h2>
       <p class="lead">The first entry is the one future-you will thank you for.</p>
-      <form class="cta" action="#" method="POST" novalidate="false" style="margin-top:24px">
+      <form class="cta" action="#" method="POST" style="margin-top:24px">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <input type="hidden" name="ref" class="refField2" value="direct">
         <button class="btn" type="submit">Tell me when it's live</button>
       </form>
+      <p class="cta-note" role="status" aria-live="polite">One launch email. <a href="/privacy.html#launch-list">Privacy details</a>.</p>
     </div>
   </section>
 
@@ -492,7 +493,7 @@
     if (f2) f2.value = ref;
   }
   // Launch list: one RPC on the studio's Supabase project (insert-only for the public key; nothing is readable
-  // from the browser). If the network call fails for any reason, fall back to a mail draft so no signup is lost.
+  // from the browser). Failed or timed-out requests show retry guidance without claiming a saved signup.
   var WAITLIST_URL = 'https://eelywdeipkraxgxtpfry.supabase.co/rest/v1/rpc/delty_waitlist_join';
   var WAITLIST_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlbHl3ZGVpcGtyYXhneHRwZnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NzI5ODQsImV4cCI6MjA5MjM0ODk4NH0.M-fYgwiViFBHSq34T2TvaLcgw5NduSNaMi9Eh1Sa-RI';
   Array.prototype.forEach.call(document.querySelectorAll('form.cta'), function (form) {
@@ -503,23 +504,29 @@
       var source = (form.querySelector('input[name="ref"]') || {}).value || 'direct';
       var btn = form.querySelector('button');
       var note = form.parentNode.querySelector('.cta-note');
-      if (!email) { if (input) input.focus(); return; }
+      if (!input || !input.checkValidity()) { if (input) input.reportValidity(); return; }
+      if (btn && btn.disabled) return;
       if (btn) { btn.disabled = true; btn.textContent = 'One moment…'; }
+      var settled = false;
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); done(false); }, 10000);
       var done = function (ok) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
         if (ok) {
           if (btn) { btn.textContent = "You're on the list ✓"; }
           if (input) { input.value = ''; }
           if (note) note.textContent = 'Done. One email when Delty is on the App Store — nothing else, ever.';
         } else {
           if (btn) { btn.disabled = false; btn.textContent = "Tell me when it's live"; }
-          window.location.href = 'mailto:contact@universalaillc.com?subject=' + encodeURIComponent('Delty launch list') +
-            '&body=' + encodeURIComponent('Please tell me when Delty is on the App Store.\n\nEmail: ' + email + '\nSource: ' + source);
-          if (note) note.textContent = 'Opening your mail app to finish — send the message and you are on the list.';
+          if (note) note.textContent = 'We could not confirm your signup. Try again or email contact@universalaillc.com.';
         }
       };
       try {
         fetch(WAITLIST_URL, {
           method: 'POST',
+          signal: controller.signal,
           headers: { 'apikey': WAITLIST_KEY, 'Authorization': 'Bearer ' + WAITLIST_KEY, 'Content-Type': 'application/json' },
           body: JSON.stringify({ p_email: email, p_source: source })
         }).then(function (r) { done(r.ok); }).catch(function () { done(false); });
