@@ -6,7 +6,7 @@ p,li{font-size:15px;color:#3d4356}
 .meta{color:#5B6478;font-size:13px;margin-bottom:28px}
 a{color:#3D7BFF}
 .sitehdr{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;color:inherit;margin:4px 0 26px}.sitehdr img{width:30px;height:30px;border-radius:9px}</style><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" href="assets/icon-180.png"></head><body><div class="wrap"><a class="sitehdr" href="/"><img src="assets/icon-180.png" alt="">Delty</a>
-<h1>Privacy Policy</h1><div class="meta">Delty · Universal AI LLC · Effective September 15, 2026</div>
+<h1>Privacy Policy</h1><div class="meta">Delty · Universal AI LLC · Effective September 25, 2026</div>
 <h2>The short version</h2>
 <p>Your health record and progress photos are stored on your device. Core tracking does not require an account. Purchases, optional analytics, and the optional research pilot use the services described below. Delty does not operate a server-side database of your health record or use advertising SDKs. We do not sell your data or share it with advertising networks.</p>
 <h2>What the app stores</h2>
@@ -30,20 +30,23 @@ a{color:#3D7BFF}
 <h2>Usage analytics (optional, off by default)</h2>
 <p>Delty can send usage events to PostHog (a third-party analytics provider) only if you turn this on in Settings. Events describe which features were used (for example, that a check-in was saved) with numeric or true/false properties only; they never include weights, measurements, routine names, notes, photos, or anything you typed. A random per-install identifier is used, never your name, email, or device identifier. Turning analytics off stops uploads and clears the local queue and identifier; it cannot recall events already sent. To have previously sent events deleted, contact contact@universalaillc.com.</p>
 
-<h2>Optional AI research pilot</h2>
-<p>The research pilot is restricted to approved accounts and may be unavailable. Before you enter credentials, the app asks you to agree to its data-sharing disclosure. Signing in sends your email and password to Supabase authentication for the dedicated Delty project in the United States. Your access session stays in app memory; the app discards refresh tokens and asks you to sign in again after expiry.</p>
-<p>When you request an explanation, Delty sends the selected ingredient, one of the fixed research questions, and a reviewed study summary through its Supabase backend to OpenAI. Your photos, health logs, routines, measurements, and notes are not included. The pilot does not accept a free-form health history or send label images to OpenAI. AI explanations may be incorrect and do not verify purity, personal suitability, or safe doses.</p>
-<p>Delty does not save explanation text in its application database. OpenAI requests use response storage disabled; this does not mean zero provider retention. Providers may retain security and operational logs and process connection metadata such as IP addresses. See <a href="https://developers.openai.com/api/docs/guides/your-data">OpenAI's API data controls</a> and <a href="https://supabase.com/privacy">Supabase's privacy policy</a> for their practices.</p>
-<p>Delty stores daily request counters keyed to your pilot account and aggregate daily counters to enforce usage limits. A daily cleanup is scheduled to delete counters whose UTC usage date is more than seven days old. Your authentication account remains until it is deleted. Provider logs and backups may have separate retention schedules.</p>
-<p>In the research panel, you can sign out and clear the displayed explanation, or choose <b>Delete pilot account</b> and confirm. Account deletion removes the Supabase authentication account and its individual request counters; aggregate counts remain until scheduled cleanup. It does not delete your on-device health record, copies you exported, or cancel an Apple subscription. You can withdraw consent before signing in; after signing in, signing out clears the active app session.</p>
-<h2 id="launch-list">Website launch list</h2>
-<p>If you request a launch notification on this website, your email address and optional referral code are sent to the studio's Supabase service to register that request. This is separate from your on-device health record and the research pilot. No health record is included. The service may process connection metadata such as your IP address. Contact contact@universalaillc.com to request removal from the launch list.</p>
+<h2>Optional evidence assistant</h2>
+<p>The assistant is optional and may be unavailable; a server-side switch controls it. It creates an anonymous account for this install with Supabase (no email, no password, no name). Before your first question the app shows what is sent and asks you to agree.</p>
+<p>When you tap a question, Delty sends the selected ingredient name and one of three fixed questions through its Supabase backend to OpenAI, together with a reviewed study summary Delty already holds. Your photos, doses, weights, notes and everything else in your record are never sent. Answers are assembled from that reviewed study and can be wrong or incomplete; they are not advice, and the linked source is the thing to read.</p>
+<p>Delty does not save answer text in any database. OpenAI requests are sent with response storage disabled; providers may still keep security and operational logs and connection metadata such as IP address under their own policies. Delty keeps a daily count of questions per anonymous account, and an aggregate daily count, to enforce limits; counters older than seven days are deleted on a schedule.</p>
+<p>In the assistant panel you can choose <b>Delete my assistant account</b>. That removes the anonymous account and its counters; aggregate counts remain until scheduled cleanup. It does not touch your on-device record.</p>
 <h2>Notifications</h2>
 <p>Reminders are scheduled locally on your device. We run no push-notification server.</p>
 <h2>Deleting your data</h2>
-<p>Use Settings → "Delete all my data" to remove Delty’s local record. Copies you exported, device backups, and information already sent to optional providers are separate. To delete a research pilot account, use the account deletion control in the research panel. To request help with provider-held data, contact us below. Deleting local data or a pilot account does not cancel your Apple subscription; manage subscriptions in your Apple settings.</p>
+<p>Use Settings → "Delete all my data" to remove Delty’s local record. Copies you exported, device backups, and information already sent to optional providers are separate. To delete an assistant account, use Delete my assistant account in the assistant panel. To request help with provider-held data, contact us below. Deleting local data or a pilot account does not cancel your Apple subscription; manage subscriptions in your Apple settings.</p>
 <h2>Age</h2><p>Delty is intended for users 18 and older.</p>
 <h2>Health disclaimer</h2><p>Delty is a tracking tool. It is not a medical device and provides no medical or dosing advice. Consult your healthcare provider for medical decisions.</p>
 <h2>Contact</h2><p>Universal AI LLC · <a href="mailto:contact@universalaillc.com">contact@universalaillc.com</a></p>
+<h2>Your iPhone backup</h2>
+<p>Your record and photos are part of your own iPhone backup (Apple&rsquo;s encrypted device backup, if you have it turned on in iOS). That backup is yours, made by Apple; Delty never uploads your record anywhere and holds no copy of it.</p>
+<h2>Support email and error signatures</h2>
+<p>If something goes wrong, Delty keeps a short list of scrubbed error signatures on your phone (no health data, no free text). They are attached only to a support email you choose to send, together with your app version. Nothing is sent on its own.</p>
+<h2>If data we hold is breached</h2>
+<p>Delty holds no copy of your health record. If we learn of a breach of data we do hold about you &mdash; purchase status, an analytics identifier, an anonymous assistant account &mdash; we will notify you and, where the U.S. Health Breach Notification Rule applies, the Federal Trade Commission.</p>
 <h2>Changes</h2><p>We will post any changes to this policy on this page with a new effective date.</p>
 </div></body></html>
