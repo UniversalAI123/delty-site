@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-rAkctFsw4QydCxAKb2LHbXP6EmbKxeNPRkfKqo6WjBg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://eelywdeipkraxgxtpfry.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-rAkctFsw4QydCxAKb2LHbXP6EmbKxeNPRkfKqo6WjBg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://eelywdeipkraxgxtpfry.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delty — Your routine, on the record</title>
+<link rel="canonical" href="https://delty.app/">
 <meta name="description" content="Delty is a private daily record for people on a GLP-1 or peptide routine: doses, check-ins and measurements, a one-page visit summary for your clinician, and optional comparable photos. Your health record stays on your iPhone; optional services are explained in our privacy policy.">
 <meta property="og:title" content="Delty — Your routine, on the record">
 <meta property="og:description" content="Doses, check-ins and measurements in one private record. A one-page visit summary. Photos when you want them.">
@@ -20,14 +21,27 @@
 <meta name="twitter:title" content="Delty — Your routine, on the record">
 <meta name="twitter:description" content="Doses, check-ins and measurements in one private record. A one-page visit summary. Photos when you want them.">
 <meta name="twitter:image" content="https://delty.app/assets/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Inter is self-hosted (Google's own latin/latin-ext woff2 slices in /assets/fonts): no third-party connection before first paint. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/Inter-400-latin.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/Inter-600-latin.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/Inter-800-latin.woff2">
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Inter-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Inter-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Inter-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Inter-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Inter-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Inter-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Inter-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Inter-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/Inter-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/Inter-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
 <style>
   :root{
     --bg:#F4F5FA; --panel:#FFFFFF; --panel2:#EEF1F8;
-    --ink:#171A2C; --dim:#5B6478; --faint:#6F7A90;
-    --teal:#1FC8AE; --teal-deep:#1AA690; --teal-text:#199E8A; --blue:#3D7BFF; --violet:#8B3BF5;
+    --ink:#171A2C; --dim:#5B6478; --faint:#5F687B;
+    --teal:#1FC8AE; --teal-deep:#1AA690; --teal-text:#199E8A; --blue:#3D7BFF; --blue-text:#0A4FE8; --violet:#8B3BF5;
     --line:#E3E7F0; --line-strong:#CBD3E4;
     --grad:linear-gradient(90deg,var(--teal-deep),var(--blue),var(--violet));
     --grad-soft:linear-gradient(135deg,#35E0C5,#3D7BFF,#8B3BF5);
@@ -41,7 +55,7 @@
     font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
     line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-  a{color:var(--blue)}
+  a{color:var(--blue-text)}
   img{max-width:100%}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
@@ -57,6 +71,7 @@
   .logo img{width:34px;height:34px;border-radius:10px;box-shadow:0 4px 14px rgba(61,123,255,.18)}
   nav{display:flex;align-items:center;gap:22px}
   nav a{font-size:.92rem;font-weight:600;color:var(--dim);text-decoration:none}
+  nav a:not(.pill){display:inline-block;padding:6px 4px;margin:-6px -4px}
   nav a:hover{color:var(--ink)}
   nav .pill{padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700}
   nav .pill:hover{color:#fff;opacity:.9}
@@ -111,23 +126,23 @@
   .screen .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:999px;background:#0b0e18}
   .screen .body{padding:22px 16px 0;flex:1}
   .s-head{display:flex;justify-content:space-between;align-items:flex-end}
-  .s-head h4{font-size:20px;letter-spacing:-.02em;font-weight:800}
+  .s-head .ttl{font-size:20px;letter-spacing:-.02em;font-weight:800;line-height:1.6;margin:0}
   .s-head small{display:block;color:var(--dim);font-weight:500;font-size:12px}
-  .s-head .day{font-size:12px;font-weight:700;color:var(--blue)}
+  .s-head .day{font-size:12px;font-weight:700;color:var(--blue-text)}
   .s-card{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 6px 16px rgba(16,26,56,.05)}
   .s-card .k{font-size:9px;font-weight:800;letter-spacing:.14em;color:var(--faint)}
-  .s-card h5{font-size:14px;font-weight:700;margin-top:4px;letter-spacing:-.01em}
+  .s-card .ttl{font-size:14px;font-weight:700;margin:4px 0 0;letter-spacing:-.01em;line-height:1.3}
   .s-card .m{font-size:11px;color:var(--dim);margin-top:2px}
   .s-card .rec{margin-top:10px;height:36px;border-radius:10px;background:var(--grad);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
   .s-label{font-size:9px;font-weight:800;letter-spacing:.14em;color:var(--faint);margin:14px 0 6px}
   .s-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:12px;font-weight:600}
   .s-row:first-child{border-top:none}
   .s-row small{display:block;font-weight:500;color:var(--dim);font-size:10px}
-  .s-row b{color:var(--blue);font-size:11px;font-weight:700}
+  .s-row b{color:var(--blue-text);font-size:11px;font-weight:700}
   .s-tabs{display:flex;justify-content:space-around;align-items:flex-end;padding:8px 10px 14px;border-top:1px solid var(--line);background:var(--panel);font-size:9px;font-weight:600;color:var(--faint)}
   .s-tabs span{display:flex;flex-direction:column;align-items:center;gap:4px}
   .s-tabs i{width:16px;height:16px;border-radius:4px;background:var(--line)}
-  .s-tabs .on{color:var(--blue)} .s-tabs .on i{background:var(--blue)}
+  .s-tabs .on{color:var(--blue-text)} .s-tabs .on i{background:var(--blue)}
   .s-tabs .rec{width:40px;height:40px;border-radius:50%;background:var(--grad-soft);margin-top:-22px;box-shadow:0 8px 18px rgba(61,123,255,.35);display:grid;place-items:center;color:#fff;font-size:20px;font-weight:300}
   .sample{position:absolute;bottom:-34px;left:50%;transform:translateX(-50%);font-size:.74rem;color:var(--faint);white-space:nowrap}
 
@@ -153,10 +168,10 @@
   .row li{margin:4px 0}
   .mock{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
   .mock .k{font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--faint)}
-  .mock h5{font-size:1rem;margin-top:6px}
+  .mock .ttl{font-size:1rem;font-weight:700;margin:6px 0 0;line-height:1.3}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
   .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:.86rem;font-weight:600;color:var(--dim);background:var(--panel)}
-  .chip.on{border-color:var(--blue);color:var(--blue);background:#E8F0FF}
+  .chip.on{border-color:var(--blue);color:var(--blue-text);background:#E8F0FF}
   .scale{display:flex;gap:6px;margin-top:12px}
   .scale span{flex:1;height:34px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;font-size:.86rem;font-weight:700;color:var(--dim)}
   .scale span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -164,7 +179,7 @@
   .weeks i{flex:1;border-radius:3px;background:var(--line)}
   .weeks i.w{background:#E8A23C}
   .page{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow);font-size:.84rem}
-  .page h6{font-size:.95rem;letter-spacing:-.01em;margin-bottom:2px}
+  .page .ttl{font-size:.95rem;font-weight:700;letter-spacing:-.01em;margin:0 0 2px;line-height:1.3}
   .page .m{color:var(--faint);font-size:.74rem;margin-bottom:12px}
   .page table{width:100%;border-collapse:collapse}
   .page td{padding:7px 0;border-top:1px solid var(--line);color:var(--dim)}
@@ -180,7 +195,7 @@
 
   /* trust band */
   .band{background:var(--ink);color:#EEF1F8;border-radius:24px;padding:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:20px 0}
-  .band h4{font-size:1.05rem;margin-bottom:6px;letter-spacing:-.01em}
+  .band h3{font-size:1.05rem;margin-bottom:6px;letter-spacing:-.01em}
   .band p{color:#9AA6BF;font-size:.93rem}
   .band .t{position:relative;padding-left:16px}
   .band .t::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:2px;background:var(--grad-soft)}
@@ -213,7 +228,7 @@
 
   footer{border-top:1px solid var(--line);padding:30px 0 48px;font-size:.8rem;color:var(--faint);line-height:1.7}
   footer .cols{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  footer a{color:var(--dim);text-decoration:none;margin-right:16px}
+  footer a{color:var(--dim);text-decoration:none;display:inline-block;padding:6px 4px;margin:0 12px 0 -4px}
   footer a:hover{color:var(--ink)}
 
   /* motion */
@@ -232,6 +247,26 @@
     .badge{width:100%;justify-content:center}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Delty: GLP-1 & Peptide Tracker",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "url": "https://delty.app/",
+  "description": "Delty is a private daily record for people on a GLP-1 or peptide routine: doses, check-ins and measurements, a one-page visit summary for your clinician, and optional comparable photos. Your health record stays on your iPhone; optional services are explained in our privacy policy.",
+  "author": {
+    "@type": "Organization",
+    "name": "Universal AI LLC",
+    "url": "https://universalaillc.com"
+  },
+  "offers": [
+    { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
+    { "@type": "Offer", "price": "49.99", "priceCurrency": "USD", "name": "Delty Pro — annual" }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
@@ -242,6 +277,7 @@
     <nav><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="/visit-summary.html">Guides</a><a href="/support.html">Support</a><a class="pill" href="#join">Get notified</a></nav>
   </header>
 
+  <main>
   <section class="hero">
     <div>
       <span class="eyebrow"><i></i>iOS · Private by design</span>
@@ -273,10 +309,10 @@
           <div class="notch"></div>
           <div class="bar"><span>9:41</span><span>●●●</span></div>
           <div class="body">
-            <div class="s-head"><div><h4>Today</h4><small>Monday</small></div><span class="day">Day 12</span></div>
+            <div class="s-head"><div><div class="ttl">Today</div><small>Monday</small></div><span class="day">Day 12</span></div>
             <div class="s-card">
               <div class="k">NEXT SCHEDULED</div>
-              <h5>Your item · your amount</h5>
+              <div class="ttl">Your item · your amount</div>
               <div class="m">Your time · Not recorded</div>
               <div class="rec">Record</div>
             </div>
@@ -330,9 +366,9 @@
       </div>
       <div class="mock">
         <div class="k">TODAY · CHECK-IN</div>
-        <h5>Energy</h5>
+        <div class="ttl">Energy</div>
         <div class="scale"><span>1</span><span>2</span><span>3</span><span class="on">4</span><span>5</span></div>
-        <h5 style="margin-top:14px">Symptoms</h5>
+        <div class="ttl" style="margin-top:14px">Symptoms</div>
         <div class="chips"><span class="chip">None</span><span class="chip on">Nausea</span><span class="chip">Fatigue</span><span class="chip">Headache</span><span class="chip">Hair shedding</span><span class="chip">Food noise</span><span class="chip">Injection-site</span></div>
       </div>
     </div>
@@ -346,7 +382,7 @@
       </div>
       <div class="mock">
         <div class="k">SYMPTOMS · DAYS PER WEEK</div>
-        <h5>Nausea</h5>
+        <div class="ttl">Nausea</div>
         <div class="weeks"><i style="height:30%" class="w"></i><i style="height:60%" class="w"></i><i style="height:45%" class="w"></i><i style="height:20%" class="w"></i><i style="height:10%" class="w"></i><i style="height:10%"></i><i style="height:10%"></i><i style="height:10%"></i></div>
         <p style="font-size:.78rem;color:var(--faint);margin-top:10px">Illustration of the layout. Bars are drawn, not measured.</p>
       </div>
@@ -359,7 +395,7 @@
         <p>Your routine exactly as you entered it, every dose with its time, measurements with dates, symptoms as reported. No sentence on the page says anything is working or not working. That conversation is yours and your clinician's.</p>
       </div>
       <div class="page">
-        <h6>Visit summary</h6>
+        <div class="ttl">Visit summary</div>
         <div class="m">Your name · Your dates · Prepared from your own entries</div>
         <table>
           <tr><td>Routine</td><td>As entered</td></tr>
@@ -411,9 +447,9 @@
 
   <section class="rise">
     <div class="band">
-      <div class="t"><h4>Your health record stays on your phone.</h4><p>Core tracking needs no account. Your health record stays local; purchases and optional services have separate data flows explained in our privacy policy. Archives are files you control.</p></div>
-      <div class="t"><h4>We document. We never advise.</h4><p>Delty does not suggest a substance, an amount or a schedule. Keep the instructions you received alongside your observations and questions for your clinician.</p></div>
-      <div class="t"><h4>No tricks.</h4><p>The daily record is free. Pro is one annual plan with a free trial, or weekly with no trial; every price is shown before anything is charged. Cancel anytime in your Apple settings.</p></div>
+      <div class="t"><h3>Your health record stays on your phone.</h3><p>Core tracking needs no account. Your health record stays local; purchases and optional services have separate data flows explained in our privacy policy. Archives are files you control.</p></div>
+      <div class="t"><h3>We document. We never advise.</h3><p>Delty does not suggest a substance, an amount or a schedule. Keep the instructions you received alongside your observations and questions for your clinician.</p></div>
+      <div class="t"><h3>No tricks.</h3><p>The daily record is free. Pro is one annual plan with a free trial, or weekly with no trial; every price is shown before anything is charged. Cancel anytime in your Apple settings.</p></div>
     </div>
   </section>
 
@@ -471,6 +507,7 @@
       <p class="cta-note" role="status" aria-live="polite">One launch email. <a href="/privacy.html#launch-list">Privacy details</a>.</p>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="cols">

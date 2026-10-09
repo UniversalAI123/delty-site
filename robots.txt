@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://delty.app/sitemap.xml
