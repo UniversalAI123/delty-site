@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-rAkctFsw4QydCxAKb2LHbXP6EmbKxeNPRkfKqo6WjBg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://eelywdeipkraxgxtpfry.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-RnAqW/uETgtv2yr4iLTNqRrUvxDGBR/t2bFQna2PpcM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://kuquefazcfrnjjbrpyws.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delty — Your routine, on the record</title>
 <link rel="canonical" href="https://delty.app/">
@@ -541,10 +541,10 @@
     var f2 = document.querySelector('.refField2');
     if (f2) f2.value = ref;
   }
-  // Launch list: one RPC on the studio's Supabase project (insert-only for the public key; nothing is readable
+  // Launch list: one RPC on Delty's own Supabase project (insert-only for the public key; nothing is readable
   // from the browser). Failed or timed-out requests show retry guidance without claiming a saved signup.
-  var WAITLIST_URL = 'https://eelywdeipkraxgxtpfry.supabase.co/rest/v1/rpc/delty_waitlist_join';
-  var WAITLIST_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlbHl3ZGVpcGtyYXhneHRwZnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NzI5ODQsImV4cCI6MjA5MjM0ODk4NH0.M-fYgwiViFBHSq34T2TvaLcgw5NduSNaMi9Eh1Sa-RI';
+  var WAITLIST_URL = 'https://kuquefazcfrnjjbrpyws.supabase.co/rest/v1/rpc/delty_waitlist_join';
+  var WAITLIST_KEY = 'sb_publishable_nc6w4Zwn5TIcv-BelvV6Mw_oGF7OXRK';
   Array.prototype.forEach.call(document.querySelectorAll('form.cta'), function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -576,7 +576,7 @@
         fetch(WAITLIST_URL, {
           method: 'POST',
           signal: controller.signal,
-          headers: { 'apikey': WAITLIST_KEY, 'Authorization': 'Bearer ' + WAITLIST_KEY, 'Content-Type': 'application/json' },
+          headers: { 'apikey': WAITLIST_KEY, 'Content-Type': 'application/json' },
           body: JSON.stringify({ p_email: email, p_source: source })
         }).then(function (r) { done(r.ok); }).catch(function () { done(false); });
       } catch (err) { done(false); }
