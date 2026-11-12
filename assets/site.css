@@ -81,7 +81,32 @@ footer .base{display:flex;justify-content:space-between;align-items:center;gap:1
 .socials a:hover,.socials a:focus-visible{opacity:1}
 footer .legal{margin:16px 0 0;max-width:72em;font-size:.84rem}
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* motion: CSS only (these pages allow no script). Transform and opacity; Reduce Motion turns it off. */
+@keyframes nav-in{from{opacity:0;transform:translateY(-14px)}}
+@keyframes page-in{from{opacity:0;transform:translateY(18px)}}
+@keyframes progress{to{transform:scaleX(1)}}
+.top header{animation:nav-in .6s var(--ease) backwards}
+.doc main{animation:page-in .7s var(--ease) .08s backwards}
+header nav a:not(.pill){position:relative}
+header nav a:not(.pill)::after{content:"";position:absolute;left:14px;right:14px;bottom:9px;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+header nav a:not(.pill):hover::after,header nav a:not(.pill):focus-visible::after{transform:scaleX(1)}
+header nav .pill:active{transform:scale(.98)}
+.logo img{transition:transform .5s var(--ease)}
+.logo:hover img{transform:rotate(-8deg) scale(1.06)}
+.doc a{text-underline-offset:3px;text-decoration-color:rgba(10,79,232,.4);transition:text-decoration-color .2s}
+.doc a:hover{text-decoration-color:currentColor}
+.doc h2{text-wrap:balance}
+.doc p,.doc li{text-wrap:pretty}
+footer .col a{transition:color .2s,transform .3s var(--ease)}
+footer .col a:hover{transform:translateX(4px)}
+.socials a{transition:opacity .2s,transform .3s var(--ease)}
+.socials a:hover{transform:translateY(-2px)}
+@supports (animation-timeline:scroll()){
+  body::after{content:"";position:fixed;top:0;left:0;right:0;height:2px;z-index:60;pointer-events:none;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;
+    animation:progress 1ms linear both;animation-timeline:scroll(root block)}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}body::after{display:none}}
 @media (max-width:720px){
   .top{padding:12px 18px 0}
   header nav a:not(.pill){display:none}

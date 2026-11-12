@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/yg1zDhTOVJK4tWh3UaOP/XU79NfgnxuwToZ8AgAWBo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://kuquefazcfrnjjbrpyws.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-/yg1zDhTOVJK4tWh3UaOP/XU79NfgnxuwToZ8AgAWBo=' 'sha256-6MHaZicclQ+cxpq1AvYMQAYew7FiKa6L6SjQ2+FvmEo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://kuquefazcfrnjjbrpyws.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delty — Your routine, on the record</title>
 <link rel="canonical" href="https://delty.app/">
@@ -103,11 +103,12 @@
   .eyebrow{padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.7);box-shadow:var(--edge),0 8px 20px -12px rgba(16,26,56,.2)}
   .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--grad-soft);box-shadow:0 0 0 4px rgba(53,224,197,.18)}
   .kicker::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--grad)}
-  h1{margin-top:24px;font-size:clamp(2.75rem,6.6vw,5.25rem);line-height:.98;letter-spacing:-.048em;font-weight:800}
+  h1{margin-top:24px;font-size:clamp(2.75rem,6.6vw,5.25rem);line-height:.98;letter-spacing:-.048em;font-weight:800;text-wrap:balance}
   .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
   h2{margin-top:14px;font-size:clamp(2rem,4.3vw,3.25rem);line-height:1.04;letter-spacing:-.04em;font-weight:800;max-width:17em;text-wrap:balance}
   h3{letter-spacing:-.025em;line-height:1.18;text-wrap:balance}
   .lead{margin-top:16px;color:var(--dim);font-size:1.16rem;max-width:36em;line-height:1.6}
+  p{text-wrap:pretty}
   section{padding:64px 0}
   section[id],#join{scroll-margin-top:104px}
 
@@ -196,11 +197,12 @@
   .note-chip.n1{top:15%;right:calc(50% + 148px);animation-delay:-2s}
   .note-chip.n2{top:47%;left:calc(50% + 146px);animation-delay:-5s}
   .note-chip.n3{bottom:17%;right:calc(50% + 142px);animation-delay:-7s}
-  .hero .copy>*{animation:enter .8s var(--ease) both}
-  .hero .copy>:nth-child(2){animation-delay:.06s}.hero .copy>:nth-child(3){animation-delay:.12s}.hero .copy>:nth-child(4){animation-delay:.16s}
-  .hero .copy>:nth-child(5){animation-delay:.2s}.hero .copy>:nth-child(6){animation-delay:.24s}.hero .copy>:nth-child(7){animation-delay:.28s}
-  .hero .stage{animation:enter 1s var(--ease) .12s both}
-  @keyframes enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .hero .copy>*{animation:enter .7s var(--ease) backwards}
+  .hero .copy>:nth-child(2){animation-delay:.05s}.hero .copy>:nth-child(3){animation-delay:.1s}.hero .copy>:nth-child(4){animation-delay:.15s}
+  .hero .copy>:nth-child(5){animation-delay:.2s}.hero .copy>:nth-child(6){animation-delay:.25s}.hero .copy>:nth-child(7){animation-delay:.28s}
+  .hero .stage{animation:enter-stage .9s var(--ease) .1s backwards}
+  @keyframes enter{from{opacity:0;transform:translateY(16px);filter:blur(8px)}}
+  @keyframes enter-stage{from{opacity:0;transform:translateY(26px) scale(.985)}}
 
   /* cards */
   .card{position:relative;background:var(--glass);border-radius:var(--r-lg);padding:30px;box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
@@ -338,15 +340,106 @@
   footer nav.socials a{display:inline-flex;margin:0;padding:0;min-height:44px;color:var(--dim)}
   footer .legal{margin-top:16px;max-width:72em;font-size:.84rem}
 
-  /* motion: content is visible without JS; the script opts in */
-  .js .rise{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
-  .js .rise.in{opacity:1;transform:none}
-  .js .card.rise.in{transition:opacity .8s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
+  /* motion: content is visible without JS; the "js" class (set by the script) opts in.
+     Only transform, opacity, filter and registered custom properties move. Reduce Motion turns all of it off. */
+  @property --ang{syntax:'<angle>';initial-value:135deg;inherits:false}
+  @property --spot{syntax:'<number>';initial-value:0;inherits:false}
+  @keyframes rise{from{opacity:0;transform:translateY(22px) scale(.985)}}
+  @keyframes nav-in{from{opacity:0;transform:translateY(-14px)}}
+  @keyframes soft-in{from{opacity:0;transform:translateY(8px)}}
+  @keyframes chip-in{from{opacity:0;scale:.9}}
+  @keyframes drift-a{to{transform:translate3d(70px,40px,0) scale(1.12)}}
+  @keyframes drift-b{to{transform:translate3d(-80px,60px,0) scale(1.08)}}
+  @keyframes drift-c{to{transform:translate3d(60px,-50px,0) scale(1.1)}}
+  @keyframes orbit{to{--ang:495deg}}
+  @keyframes ping{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(3.2);opacity:0}}
+  @keyframes progress{to{transform:scaleX(1)}}
+  @keyframes para-up{to{translate:0 -30px}}
+  @keyframes para-down{to{translate:0 46px}}
+
+  /* reveal on scroll: an animation (not a transition), so hover on a revealed card answers at once */
+  .js .rise{opacity:0}
+  .js .rise.in{opacity:1;animation:rise .8s var(--ease) var(--d,0ms) backwards}
+
+  /* load: the nav settles first, then the hero (see .hero .copy above), then the sample screen fills in */
+  .top header{animation:nav-in .6s var(--ease) backwards}
+  .hero .screen .body>*{animation:soft-in .5s var(--ease) backwards}
+  .hero .screen .body>:nth-child(1){animation-delay:.3s}.hero .screen .body>:nth-child(2){animation-delay:.38s}.hero .screen .body>:nth-child(3){animation-delay:.46s}
+  .hero .screen .body>:nth-child(4){animation-delay:.52s}.hero .screen .body>:nth-child(5){animation-delay:.58s}
+  .note-chip{animation:chip-in .6s var(--ease) backwards,float 9s ease-in-out infinite}
+  .note-chip.n1{animation-delay:.55s,-2s}.note-chip.n2{animation-delay:.65s,-5s}.note-chip.n3{animation-delay:.75s,-7s}
+  .eyebrow i{position:relative}
+  .eyebrow i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#35E0C5;animation:ping 3.4s cubic-bezier(0,0,.2,1) infinite}
+
+  /* ambient: the light behind the page drifts very slowly */
+  .aurora i{will-change:transform}
+  .aurora .a{animation:drift-a 26s ease-in-out infinite alternate}
+  .aurora .b{animation:drift-b 34s ease-in-out infinite alternate}
+  .aurora .c{animation:drift-c 40s ease-in-out infinite alternate}
+  .band::after{animation:drift-b 32s ease-in-out infinite alternate}
+
+  /* the Pro plan's edge turns slowly; where @property is missing it simply stays still */
+  .plan.pro{background:linear-gradient(180deg,#fff,#F6F8FF) padding-box,conic-gradient(from var(--ang,135deg),#35E0C5,#3D7BFF,#8B3BF5,#3D7BFF,#35E0C5) border-box;animation:orbit 16s linear infinite}
+  .js .plan.pro.rise.in{animation:rise .8s var(--ease) var(--d,0ms) backwards,orbit 16s linear infinite}
+
+  /* the sample bars grow in when their card arrives */
+  .js .rise .weeks i{transform:scaleY(0);transform-origin:50% 100%}
+  .js .rise.in .weeks i{transform:none;transition:transform .9s var(--ease);transition-delay:calc(var(--d,0ms) + .3s + var(--i,0)*60ms)}
+  .weeks i:nth-child(2){--i:1}.weeks i:nth-child(3){--i:2}.weeks i:nth-child(4){--i:3}.weeks i:nth-child(5){--i:4}.weeks i:nth-child(6){--i:5}.weeks i:nth-child(7){--i:6}.weeks i:nth-child(8){--i:7}
+
+  /* interaction */
+  header nav a:not(.pill){position:relative}
+  header nav a:not(.pill)::after{content:"";position:absolute;left:14px;right:14px;bottom:9px;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+  header nav a:not(.pill):hover::after,header nav a:not(.pill):focus-visible::after{transform:scaleX(1)}
+  nav .pill:active,.btn:active{transform:scale(.98)}
+  .logo img{transition:transform .5s var(--ease)}
+  .logo:hover img{transform:rotate(-8deg) scale(1.06)}
+  .card .ic{transition:transform .45s var(--ease)}
+  .card:hover .ic{transform:translateY(-2px) rotate(-5deg) scale(1.05)}
+  .feature::before{transition:transform .9s var(--ease)}
+  .feature:hover::before{transform:scale(1.3)}
+  footer .col a{transition:color .2s,transform .3s var(--ease)}
+  footer .col a:hover{transform:translateX(4px)}
+  .socials a{transition:opacity .2s,transform .3s var(--ease)}
+  .socials a:hover{transform:translateY(-2px)}
+  summary::after{transition:transform .3s var(--ease),scale .3s var(--ease)}
+  summary:hover::after{scale:1.1}
+
+  /* answers open and close smoothly where the browser can size to content */
+  @supports (interpolate-size:allow-keywords){
+    :root{interpolate-size:allow-keywords}
+    details::details-content{block-size:0;opacity:0;overflow:clip;transition:block-size .45s var(--ease),opacity .35s ease,content-visibility .45s allow-discrete}
+    details[open]::details-content{block-size:auto;opacity:1}
+  }
+
+  /* a soft light follows the pointer across a card (mouse only; the "spot" class is set by script) */
+  @media (hover:hover) and (pointer:fine){
+    .spot .card{background:radial-gradient(480px circle at var(--mx,50%) var(--my,0px),rgba(61,123,255,calc(.09*var(--spot,0))),transparent 62%),var(--glass);
+      transition:transform .35s var(--ease),box-shadow .35s var(--ease),--spot .5s ease}
+    .spot .card:hover{--spot:1}
+    .spot .plan.pro{background:radial-gradient(480px circle at var(--mx,50%) var(--my,0px),rgba(61,123,255,calc(.09*var(--spot,0))),transparent 62%) padding-box,linear-gradient(180deg,#fff,#F6F8FF) padding-box,conic-gradient(from var(--ang,135deg),#35E0C5,#3D7BFF,#8B3BF5,#3D7BFF,#35E0C5) border-box}
+  }
+
+  /* scroll-linked: a thin progress line, and the hero device drifts against its dial */
+  @supports (animation-timeline:scroll()){
+    body::after{content:"";position:fixed;top:0;left:0;right:0;height:2px;z-index:60;pointer-events:none;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;
+      animation:progress 1ms linear both;animation-timeline:scroll(root block)}
+    @media (min-width:721px){
+      .hero .phone{animation:float 8s ease-in-out infinite,para-up 1ms linear both;animation-timeline:auto,scroll(root block);animation-range:normal,0px 800px}
+      .hero .stage>.dial{animation:para-down 1ms linear both;animation-timeline:scroll(root block);animation-range:0px 800px}
+    }
+  }
+
+  @media (max-width:720px){
+    .aurora i,.band::after,.hero .screen .body>*{animation:none}
+  }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
-    .js .rise{opacity:1;transform:none}
+    .js .rise{opacity:1}
+    .js .rise .weeks i{transform:none}
     .page{transform:none}
+    body::after{display:none}
   }
 
   @media (max-width:1279px){
@@ -719,6 +812,8 @@
   </footer>
 
 </div>
+<!-- Pointer light on cards (mouse only). Its hash is pinned in the policy above; the launch-list script below is unchanged. -->
+<script>(function(){var d=document,r=d.documentElement,m=window.matchMedia;if(!m||!r.classList||!m('(hover:hover) and (pointer:fine)').matches||m('(prefers-reduced-motion:reduce)').matches)return;r.classList.add('spot');var c=null,x=0,y=0,q=false;d.addEventListener('pointermove',function(e){var t=e.target&&e.target.closest?e.target.closest('.card'):null;if(!t)return;c=t;x=e.clientX;y=e.clientY;if(q)return;q=true;requestAnimationFrame(function(){q=false;var b=c.getBoundingClientRect();c.style.setProperty('--mx',(x-b.left)+'px');c.style.setProperty('--my',(y-b.top)+'px')})},{passive:true})})();</script>
 <script>
   // per-creator attribution: ?ref=creatorcode flows into the form submission
   var ref = new URLSearchParams(location.search).get('ref');
